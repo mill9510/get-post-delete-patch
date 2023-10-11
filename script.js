@@ -1,37 +1,33 @@
-"use strict";
+import { getPets, deletePet, updatePet } from "./utils/pets.js";
 
-import { getPets, removePets } from "./utils/pets.js";
-
-async function init() {
+async function showPets() {
   const pets = await getPets();
   console.log(pets);
-
-  //   pets.forEach((pet) => {
-  //     document.querySelector("#name").textContent = pet.name;
-  //     //   document.querySelector("#imgPet").src = imagePath;
-  //     document.querySelector("#species").textContent = pet.species;
-  //     document.querySelector("#race").textContent = pet.race;
-  //   });
-
-  const container = document.querySelector("#pet_card");
-  container.innerHTML = "";
-
+  console.log(pets.length, "dyr i databasen");
+  document.querySelector(".pets").innerHTML = "";
   pets.forEach((pet) => {
-    const petDiv = document.createElement("div");
-    petDiv.innerHTML = `
-    <h2>${pet.name}</h2>
-    <h3>Species: ${pet.species}</h3>
-    <h4>Race: ${pet.race}</h4>
-    <p>Date of Birth: ${pet.dob}</p>
-    <ul><li>Traits: ${pet.traits}<li></ul>
-  `;
-    container.appendChild(petDiv);
+    const template = document.querySelector("template").content;
+    const copy = template.cloneNode(true);
+    copy.querySelector("h2").textContent = pet.name;
+    copy.querySelector(".species").textContent = pet.species;
+    copy.querySelector(".race").textContent = pet.race;
+    copy.querySelector(".status").textContent = pet.isAlive;
+    const deleteButton = copy.querySelector("button[data-action='delete']");
+    deleteButton.dataset.id = pet.id;
+    const updateButton = copy.querySelector("button[data-action='update']");
+    updateButton.dataset.id = pet.id;
+
+    deleteButton.addEventListener("click", async (e) => {
+      await deletePet(pet.id);
+      showPets();
+    });
+    updateButton.addEventListener("click", async (e) => {
+      console.log(pet.id, "skal opdateres");
+      await updatePet(pet.id);
+      showPets();
+    });
+    document.querySelector(".pets").appendChild(copy);
   });
 }
 
-document.querySelector("button").addEventListener("click", () => {
-  removePets(7);
-  init();
-});
-
-init();
+showPets();

@@ -18,24 +18,60 @@
         </ul>
       </nav>
     </header>
+    <section>
+      <h1>PEOPLE'S PETS</h1>
+      <h2>▾</h2>
+    </section>
     <main>
-      <section>
-        <h1>SOMEBODY'S PETS</h1>
-        <h2>▾</h2>
-      </section>
-      <div id="pet_card"></div>
-      <article>
-        <!--   
-      <img src="" alt="" />
-      <h2 id="name"></h2>
-      <h3 id="species"></h3>
-      <h4 id="race"></h4>
-      <p id="activity"></p>
-      <p id="status"></p> -->
-      </article>
+      <section class="pets"></section>
+      <form action="">
+        <label for="name">Pet name</label>
+        <input name="name" type="text" id="petname" placeholder="E.g. Fluffy" required />
 
-      <button>Delete</button>
+        <label for="species">Pet species</label>
+        <input name="species" type="text" id="species" placeholder="E.g. Dog" required />
+
+        <label for="race">Race</label>
+        <input name="race" type="text" id="race" placeholder="E.g. Golden Retriever" />
+
+        <label for="dateofbirth">Date of birth</label>
+        <input name="dateofbirth" type="date" id="dateofbirth" required />
+
+        <fieldset>
+          <legend>Is the pet alive?</legend>
+          <label for="status">Yes</label>
+          <input name="status" type="radio" id="isAlive" value="true" />
+          <label for="isNotAlive">No</label>
+          <input name="status" type="radio" id="isNotAlive" value="false" />
+        </fieldset>
+
+        <label for="traits">Traits</label>
+        <input name="traits" type="text" id="traits" placeholder="E.g. Funny, smart" />
+
+        <label for="activity">What's the pet's activity level?</label>
+        <p id="instructions">Ranges from activity level 1 (not very active) to activity level 10 (very active)</p>
+        <input aria-describedby="instructions" name="activity" type="range" id="activity" min="1" max="10" />
+
+        <button type="submit" value="submit pet">Submit Pet</button>
+      </form>
     </main>
+    <template>
+      <article>
+        <h2>Fluffy</h2>
+        <p>Status: <span class="status"></span></p>
+        <p>
+          <span class="species">Hund</span> -
+          <span class="race">Golden Retriever</span>
+        </p>
+        <div class="actions">
+          <button data-id="15" data-action="delete">Slet</button>
+          <button data-id="15" data-action="update">Opdater</button>
+        </div>
+      </article>
+    </template>
+
+    <!-- <button>Delete</button> -->
+
     <script type="module" src="script.js"></script>
   </body>
 </html>

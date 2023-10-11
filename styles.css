@@ -16,6 +16,8 @@ body {
 
 main {
   padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
 }
 
 header nav {
@@ -65,40 +67,78 @@ h2,
 h3,
 h4,
 p,
-li {
+li,
+label,
+input,
+legend,
+button {
   font-family: var(--font);
   font-weight: 200;
 }
 
-#pet_card {
+form {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
+  max-width: 400px;
+  border: 1px solid var(--border-col);
+  padding: 20px;
+  margin-top: 0.8rem;
+
+  & fieldset {
+    border: none;
+  }
+
+  & input {
+    margin-bottom: 1rem;
+    padding: 10px 20px 10px 20px;
+  }
+
+  & label {
+    margin-bottom: 0.5rem;
+  }
+
+  & p {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  & button {
+    width: fit-content;
+    justify-self: center;
+    padding: 10px;
+    border: solid 1px var(--border-col);
+    background-color: var(--bg-col);
+  }
 }
 
-#pet_card > div {
+section.pets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+section.pets > article {
   background-color: var(--bg-col);
   margin: 0.8rem;
   border: solid 1px var(--border-col);
   padding: 0.5rem;
 }
 
-#pet_card > div > h2 {
+section.pets > h2 {
   font-size: 1.5rem;
   margin-bottom: 0.8rem;
 }
 
-#pet_card > div > h3 {
+section.pets > p.status {
   font-size: 1.2rem;
   margin-bottom: 0.8rem;
 }
 
-#pet_card > div > h4 {
+section.pets > p.race {
   font-size: 1rem;
   margin-bottom: 0.8rem;
 }
 
-#pet_card > div > p,
-ul > li {
+section.pets > p.species {
   font-size: 0.8rem;
   margin-bottom: 0.8rem;
 }

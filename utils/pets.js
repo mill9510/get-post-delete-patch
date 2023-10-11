@@ -37,7 +37,7 @@ export async function postPets() {
   return data;
 }
 
-export async function removePets(id) {
+export async function deletePet(id) {
   let headersList = {
     apikey: myApiKey,
   };
@@ -51,7 +51,7 @@ export async function removePets(id) {
   //   console.log(data);
 }
 
-export async function patchPets() {
+export async function updatePet(id) {
   let headersList = {
     apikey: myApiKey,
     "Content-Type": "application/json",
@@ -60,9 +60,10 @@ export async function patchPets() {
   let bodyContent = JSON.stringify({
     name: "Susan",
     traits: ["Sad", "Lonely"],
+    isAlive: true,
   });
 
-  let response = await fetch("https://auoiblhjqpxvkztdmjis.supabase.co/rest/v1/pets?id=eq.2", {
+  let response = await fetch("https://auoiblhjqpxvkztdmjis.supabase.co/rest/v1/pets?id=eq.2" + id, {
     method: "PATCH",
     body: bodyContent,
     headers: headersList,
