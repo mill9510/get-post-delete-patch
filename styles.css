@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+}
+
+:root {
+  --bg-col: rgb(247, 247, 247);
+  --border-col: rgb(58, 58, 58);
+  --font: "Montserrat", sans-serif;
+}
+
+body {
+  background-color: var(--bg-col);
+  max-width: 1200px;
+  margin: auto;
+}
+
+main {
+  padding: 20px;
+}
+
+header nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 20px;
+
+  & a {
+    color: var(--accent_col);
+    text-decoration: none;
+    align-self: center;
+    font-weight: 200;
+    font-family: var(--font);
+  }
+}
+
+header nav ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  list-style-type: none;
+  justify-self: end;
+  gap: 3rem;
+}
+
+header nav ul li {
+  text-decoration: none;
+  color: var(--accent_col);
+  font-family: var(--font);
+}
+
+section:has(h1) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border-col);
+
+  & h2 {
+    justify-self: end;
+  }
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+}
+
+h2,
+h3,
+h4,
+p,
+li {
+  font-family: var(--font);
+  font-weight: 200;
+}
+
+#pet_card {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#pet_card > div {
+  background-color: var(--bg-col);
+  margin: 0.8rem;
+  border: solid 1px var(--border-col);
+  padding: 0.5rem;
+}
+
+#pet_card > div > h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+#pet_card > div > h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+#pet_card > div > h4 {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+#pet_card > div > p,
+ul > li {
+  font-size: 0.8rem;
+  margin-bottom: 0.8rem;
+}
